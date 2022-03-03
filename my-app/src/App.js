@@ -28,11 +28,8 @@ function App() {
     setUserLink(html_url);
   };
 
-  const searchUser = (e) => {
-    setInput(e.target.value)
-    // e.preventDefault();
-  }
-  
+  const searchUser = (e) => setInput(e.target.value);
+
   const submit = () => {
     fetch(`https://api.github.com/users/${input}`)
       .then((respond) => respond.json())
