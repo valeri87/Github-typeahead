@@ -11,7 +11,7 @@ function App() {
   const [userName, setUsername] = useState("");
   const [input, setInput] = useState("");
   const [userLink, setUserLink] = useState("");
-  const [error, setErorr] = useState("");
+  const [error, setErorr] = useState(null);
 
   useEffect(() => {
     fetch("https://api.github.com/users/")
@@ -29,10 +29,10 @@ function App() {
   };
 
   const searchUser = (e) => {
+    setInput(e.target.value)
     // e.preventDefault();
-    setInput(e.target.value);
-  };
-
+  }
+  
   const submit = () => {
     fetch(`https://api.github.com/users/${input}`)
       .then((respond) => respond.json())
@@ -68,8 +68,8 @@ function App() {
             <img className="userImg" src={avatar || userIMG} />
             <span className="fullName">{name}</span>
             <span className="userName">
-              <img className="userLogo" src={userLogo} />{" "}
-              <a className="userLink" href={userLink}>
+              <img className="userLogo" src={userLogo} />
+              <a className="userLink" href={userLink} target="_blank">
                 {userName || "user"}
               </a>
             </span>
