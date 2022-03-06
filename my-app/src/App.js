@@ -30,7 +30,8 @@ function App() {
 
   const searchUser = (e) => setInput(e.target.value);
 
-  const submit = () => {
+  const submit = (e) => {
+    e.preventDefault();
     fetch(`https://api.github.com/users/${input}`)
       .then((respond) => respond.json())
       .then((data) => {
